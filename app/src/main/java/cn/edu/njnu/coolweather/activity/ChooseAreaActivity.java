@@ -83,6 +83,7 @@ public class ChooseAreaActivity extends Activity {
                 }
             }
         });
+        queryProvinces();
     }
 
     /**
@@ -157,7 +158,9 @@ public class ChooseAreaActivity extends Activity {
                 if("province".equals(type)){
                     result= Utility.handleProvincesResponse(coolWeatherDB,response);
                 }else if ("city".equals(type)){
-                    result=Utility.handleCitiesResponse(coolWeatherDB,response,selectedCity.getId());
+                    result=Utility.handleCitiesResponse(coolWeatherDB,response,selectedProvince.getId());
+                }else if ("county".equals(type)){
+                    result=Utility.handleCountiesResponse(coolWeatherDB,response,selectedCity.getId());
                 }
                 if (result){
                     runOnUiThread(new Runnable() {
